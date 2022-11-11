@@ -45,21 +45,21 @@ if [ ! -x "$HOME/.config/pcmanfm/LXDE/" ]; then
 fi
 
 # nginx workers
-sed -i 's|worker_processes .*|worker_processes 1;|' /etc/nginx/nginx.conf
+#sed -i 's|worker_processes .*|worker_processes 1;|' /etc/nginx/nginx.conf
 
 # nginx ssl
-if [ -n "$SSL_PORT" ] && [ -e "/etc/nginx/ssl/nginx.key" ]; then
-    echo "* enable SSL"
-	sed -i 's|#_SSL_PORT_#\(.*\)443\(.*\)|\1'$SSL_PORT'\2|' /etc/nginx/sites-enabled/default
-	sed -i 's|#_SSL_PORT_#||' /etc/nginx/sites-enabled/default
-fi
+#if [ -n "$SSL_PORT" ] && [ -e "/etc/nginx/ssl/nginx.key" ]; then
+#    echo "* enable SSL"
+#	sed -i 's|#_SSL_PORT_#\(.*\)443\(.*\)|\1'$SSL_PORT'\2|' /etc/nginx/sites-enabled/default
+#	sed -i 's|#_SSL_PORT_#||' /etc/nginx/sites-enabled/default
+#fi
 
 # nginx http base authentication
-if [ -n "$HTTP_PASSWORD" ]; then
-    echo "* enable HTTP base authentication"
-    htpasswd -bc /etc/nginx/.htpasswd $USER $HTTP_PASSWORD
-	sed -i 's|#_HTTP_PASSWORD_#||' /etc/nginx/sites-enabled/default
-fi
+#if [ -n "$HTTP_PASSWORD" ]; then
+#    echo "* enable HTTP base authentication"
+#    htpasswd -bc /etc/nginx/.htpasswd $USER $HTTP_PASSWORD
+#	sed -i 's|#_HTTP_PASSWORD_#||' /etc/nginx/sites-enabled/default
+#fi
 
 # dynamic prefix path renaming
 if [ -n "$RELATIVE_URL_ROOT" ]; then
